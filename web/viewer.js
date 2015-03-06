@@ -27,6 +27,8 @@
 
 'use strict';
 
+
+
 var DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf';
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
@@ -36,6 +38,7 @@ var SCALE_SELECT_CONTAINER_PADDING = 8;
 var SCALE_SELECT_PADDING = 22;
 var PAGE_NUMBER_LOADING_INDICATOR = 'visiblePageIsLoading';
 var DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
+var ISFF = typeof InstallTrigger !== 'undefined'; 
 //#if B2G
 //PDFJS.useOnlyCssZoom = true;
 //PDFJS.disableTextLayer = true;
@@ -1398,7 +1401,7 @@ var PDFViewerApplication = {
   }
 };
 //#if GENERIC
-window.PDFView = PDFViewerApplication; // obsolete name, using it as an alias
+  window.PDFView = PDFViewerApplication; // obsolete name, using it as an aliaS
 //#endif
 
 //#if CHROME
@@ -1693,7 +1696,11 @@ function webViewerInitialized() {
 //#endif
 }
 
-document.addEventListener('DOMContentLoaded', webViewerLoad, true);
+if (ISFF == true){
+  alert('Unfortunately, your browser vendor is not compatible due to privacy issues.');
+} else {
+  document.addEventListener('DOMContentLoaded', webViewerLoad, true);
+}
 
 document.addEventListener('pagerendered', function (e) {
   var pageNumber = e.detail.pageNumber;
