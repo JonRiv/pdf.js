@@ -539,6 +539,7 @@ var PDFViewerApplication = {
     }
   },
 
+  /*
   download: function pdfViewDownload() {
     function downloadByUrl() {
       downloadManager.downloadUrl(url, filename);
@@ -552,6 +553,7 @@ var PDFViewerApplication = {
       // fallback won't work either (or is already open).
       PDFViewerApplication.error('PDF failed to download.');
     };
+    
 
     if (!this.pdfDocument) { // the PDF is not ready yet
       downloadByUrl();
@@ -571,6 +573,7 @@ var PDFViewerApplication = {
       downloadByUrl // Error occurred try downloading with just the url.
     ).then(null, downloadByUrl);
   },
+  */
 
   fallback: function pdfViewFallback(featureId) {
 //#if !(FIREFOX || MOZCENTRAL)
@@ -933,7 +936,7 @@ var PDFViewerApplication = {
             var js = javaScript[i];
             if (js && regex.test(js)) {
               setTimeout(function() {
-                window.print();
+                //window.print();
               });
               return;
             }
@@ -965,11 +968,18 @@ var PDFViewerApplication = {
       });
       pdfDocument.getAttachments().then(function(attachments) {
         var container = document.getElementById('attachmentsView');
+        /*
         self.attachments = new PDFAttachmentView({
           container: container,
           attachments: attachments,
           downloadManager: new DownloadManager()
         });
+        */
+        self.attachments = new PDFAttachmentView({
+          container: container,
+          attachments: attachments
+        });
+
         self.attachments.render();
         document.getElementById('viewAttachments').disabled = !attachments;
 
