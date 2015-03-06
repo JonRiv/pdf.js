@@ -165,7 +165,7 @@ WebServer.prototype = {
       if (queryPart === 'frame') {
         res.end('<html><frameset cols=*,200><frame name=pdf>' +
           '<frame src=\"' + encodeURI(pathPart) +
-          '?side\"></frameset></html>', 'utf8');
+          'test/pdfs/?side\"></frameset></html>', 'utf8');
         return;
       }
       var all = queryPart === 'all';
