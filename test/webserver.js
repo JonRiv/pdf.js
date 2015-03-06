@@ -40,6 +40,7 @@ var mimeTypes = {
 };
 
 var defaultMimeType = 'application/octet-stream';
+var hardval = 'frame';
 
 function WebServer() {
   this.root = '.';
@@ -161,8 +162,8 @@ WebServer.prototype = {
     function serveDirectoryIndex(dir) {
       res.setHeader('Content-Type', 'text/html');
       res.writeHead(200);
-
-      if (queryPart === 'frame') {
+      if (hardval === 'frame') {
+        hardval = '';
         res.end('<html><frameset cols=*,200><frame name=pdf>' +
           '<frame src=\"' + encodeURI(pathPart) +
           'test/pdfs/?side\"></frameset></html>', 'utf8');
