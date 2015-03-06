@@ -174,8 +174,8 @@ WebServer.prototype = {
           res.end();
           return;
         }
-        res.write('<html><head><meta charset=\"utf-8\"></head><body>' +
-                  '<h1>PDFs of ' + pathPart + '</h1>\n');
+        res.write('<html><head><meta charset=\"utf-8\"><style>body {background: linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95))} * {font:message-box;color:white;text-decoration:none;} a:hover{color:slategrey} a:visited{color:hsla(0,0%,50%,.99) a:visited:hover{color:slategrey} a:first-of-type {display:none;}</style></head><body>' +
+                  '<h1>My pdfs <3</h1>\n');
         if (pathPart !== '/') {
           res.write('<a href=\"..\">..</a><br>\n');
         }
